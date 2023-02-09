@@ -11,7 +11,7 @@ import SearchForm from "./SearchForm.vue";
 </script>
 
 <template>
-    <h1>Header</h1>
+    <h1>BoolFlix</h1>
     <SearchForm />
 </template>
 

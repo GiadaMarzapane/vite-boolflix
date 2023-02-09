@@ -7,7 +7,12 @@
 </script>
 
 <template>
-    <h1>SarchForm</h1>
+
+    <div>
+        <input type="text" placeholder="Effettua la tua ricerca...">
+        <button type="button">Cerca</button>
+    </div>
+
 </template>
 
 <style lang="scss">
