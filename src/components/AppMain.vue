@@ -6,18 +6,25 @@ import { store } from '../store';
     data() {
         return {
             store,
-            classFlag: ''
+            // classFlag: ''
         }
     },
     methods:{
         setFlag(lang){
-            this.classFlag = lang
+            let classflag = '';
             if (lang == 'en') {
-                return this.classFlag = 'gb'
+                return classflag = 'gb'
             }
             else if(lang == 'ja'){
-                return this.classFlag = 'jp'
+                return classflag = 'jp'
             }
+            else if (lang == 'ko') {
+                return classflag = 'kn'
+            }
+            else if (lang == 'zh') {
+                return classflag = 'cn'
+            }
+            return classflag = lang
         }
     }
     }
@@ -31,8 +38,8 @@ import { store } from '../store';
         <li> <strong>Titolo: </strong>{{ element.title }}</li>
         <li> <strong>Titolo originale: </strong>{{ element.original_title }}</li>
         <li> <strong>Lingua: </strong>
-            {{ setFlag(element.original_language) }}
-            <span :class="'fi fi-'+classFlag"></span>
+            {{  }}
+            <span :class="'fi fi-' + setFlag(element.original_language)"></span>
         </li>
         <li> <strong>Voto: </strong>{{ element.vote_average }}</li>
     </ul>
@@ -41,7 +48,9 @@ import { store } from '../store';
     <ul v-for="elementB in store.series">
         <li> <strong>Titolo: </strong>{{ elementB.name }}</li>
         <li> <strong>Titolo originale: </strong>{{ elementB.original_name }} </li>
-        <li> <strong>Lingua: </strong>{{ elementB.original_language }} </li>
+        <li> <strong>Lingua: </strong>
+            <span :class="'fi fi-' + setFlag(elementB.original_language)"></span>
+        </li>
         <li> <strong>Voto: </strong>{{ elementB.vote_average }}</li>
     </ul>
 </template>
