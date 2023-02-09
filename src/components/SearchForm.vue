@@ -1,13 +1,13 @@
 <script>
     
     export default{
-        name: 'AppFooter'
+        name: 'SarchForm'
     }
 
 </script>
 
 <template>
-    <h1>Footer</h1>
+    <h1>SarchForm</h1>
 </template>
 
 <style lang="scss">
