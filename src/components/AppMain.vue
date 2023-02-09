@@ -64,10 +64,10 @@ import { store } from '../store';
             <strong>Voto: </strong>
             {{ element.vote_average }} // {{ voteAndStar(element.vote_average) }}
             <span v-for="index in voteAndStar(element.vote_average)">
-                &#127765;
+                <font-awesome-icon icon="fa-solid fa-star" />
             </span>
             <span v-for="index in (5 - voteAndStar(element.vote_average))">
-                &#127770;
+                <font-awesome-icon icon="fa-regular fa-star" />
             </span>
         </li>
     </ul>
