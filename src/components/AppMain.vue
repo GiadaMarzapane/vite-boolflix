@@ -27,6 +27,13 @@ import { store } from '../store';
         },
         cover(posterpath){
             return `https://image.tmdb.org/t/p/w154${posterpath}`
+        },
+        voteAndStar(OldValue){
+            let NewValue = (((OldValue - 1) * (5 - 1)) / (10 - 1)) + 1
+            if (OldValue == 0) {
+                return NewValue = 0
+            }
+            return NewValue.toFixed(0);
         }
     }
     }
@@ -43,7 +50,7 @@ import { store } from '../store';
         <li> <strong>Lingua: </strong>
             <span :class="'fi fi-' + setFlag(element.original_language)"></span>
         </li>
-        <li> <strong>Voto: </strong>{{ element.vote_average }}</li>
+        <li> <strong>Voto: </strong>{{ element.vote_average }} // {{ voteAndStar(element.vote_average) }}</li>
     </ul>
     <hr>
     <h4>SERIE TV</h4>
@@ -54,7 +61,7 @@ import { store } from '../store';
         <li> <strong>Lingua: </strong>
             <span :class="'fi fi-' + setFlag(elementB.original_language)"></span>
         </li>
-        <li> <strong>Voto: </strong>{{ elementB.vote_average }}</li>
+        <li> <strong>Voto: </strong>{{ elementB.vote_average }} // {{ voteAndStar(elementB.vote_average) }}</li>
     </ul>
 </template>
 
