@@ -1,7 +1,13 @@
 <script>
+import { store } from '../store';
     
     export default{
-        name: 'SarchForm'
+        name: 'SarchForm',
+        data(){
+            return{
+                store
+            }
+        }
     }
 
 </script>
@@ -9,8 +15,8 @@
 <template>
 
     <div>
-        <input type="text" placeholder="Effettua la tua ricerca...">
-        <button type="button">Cerca</button>
+        <input type="text" placeholder="Effettua la tua ricerca..." v-model="store.searchText">
+        <button type="button" @click="$emit('search')">Cerca</button>
     </div>
 
 </template>
