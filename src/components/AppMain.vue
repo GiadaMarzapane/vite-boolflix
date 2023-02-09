@@ -6,7 +6,6 @@ import { store } from '../store';
     data() {
         return {
             store,
-            // classFlag: ''
         }
     },
     methods:{
@@ -25,6 +24,9 @@ import { store } from '../store';
                 return classflag = 'cn'
             }
             return classflag = lang
+        },
+        cover(posterpath){
+            return `https://image.tmdb.org/t/p/w154${posterpath}`
         }
     }
     }
@@ -36,9 +38,9 @@ import { store } from '../store';
     <h4>FILM</h4>
     <ul v-for="element in store.movies">
         <li> <strong>Titolo: </strong>{{ element.title }}</li>
+        <img :src="cover(element.poster_path)" :alt="element.original_title">
         <li> <strong>Titolo originale: </strong>{{ element.original_title }}</li>
         <li> <strong>Lingua: </strong>
-            {{  }}
             <span :class="'fi fi-' + setFlag(element.original_language)"></span>
         </li>
         <li> <strong>Voto: </strong>{{ element.vote_average }}</li>
@@ -47,6 +49,7 @@ import { store } from '../store';
     <h4>SERIE TV</h4>
     <ul v-for="elementB in store.series">
         <li> <strong>Titolo: </strong>{{ elementB.name }}</li>
+        <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
         <li> <strong>Titolo originale: </strong>{{ elementB.original_name }} </li>
         <li> <strong>Lingua: </strong>
             <span :class="'fi fi-' + setFlag(elementB.original_language)"></span>
