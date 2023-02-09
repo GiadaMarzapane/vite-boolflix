@@ -6,6 +6,7 @@ import { store } from '../store';
     data() {
         return {
             store,
+            stars: 0
         }
     },
     methods:{
@@ -31,9 +32,11 @@ import { store } from '../store';
         voteAndStar(OldValue){
             let NewValue = (((OldValue - 1) * (5 - 1)) / (10 - 1)) + 1
             if (OldValue == 0) {
-                return NewValue = 0
+                console.log(typeof this.stars, this.stars)
+                return this.stars = 0
             }
-            return NewValue.toFixed(0);
+            console.log(this.stars)
+            return this.stars = parseInt(NewValue.toFixed(0));
         }
     }
     }
@@ -44,13 +47,29 @@ import { store } from '../store';
     <h3> <em>La tua ricerca ha ottenuto i seguenti risultati:</em> </h3>
     <h4>FILM</h4>
     <ul v-for="element in store.movies">
-        <li> <strong>Titolo: </strong>{{ element.title }}</li>
+        <li>
+            <strong>Titolo: </strong>
+            {{ element.title }}
+        </li>
         <img :src="cover(element.poster_path)" :alt="element.original_title">
-        <li> <strong>Titolo originale: </strong>{{ element.original_title }}</li>
-        <li> <strong>Lingua: </strong>
+        <li>
+            <strong>Titolo originale: </strong>
+            {{ element.original_title }}
+        </li>
+        <li>
+            <strong>Lingua: </strong>
             <span :class="'fi fi-' + setFlag(element.original_language)"></span>
         </li>
-        <li> <strong>Voto: </strong>{{ element.vote_average }} // {{ voteAndStar(element.vote_average) }}</li>
+        <li>
+            <strong>Voto: </strong>
+            {{ element.vote_average }} // {{ voteAndStar(element.vote_average) }}
+            <span v-for="index in voteAndStar(element.vote_average)">
+                &#127765;
+            </span>
+            <span v-for="index in (5 - voteAndStar(element.vote_average))">
+                &#127770;
+            </span>
+        </li>
     </ul>
     <hr>
     <h4>SERIE TV</h4>
