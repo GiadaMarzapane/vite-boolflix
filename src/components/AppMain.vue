@@ -44,46 +44,135 @@ import { store } from '../store';
 </script>
 
 <template>
-    <h3> <em>La tua ricerca ha ottenuto i seguenti risultati:</em> </h3>
-    <h4>FILM</h4>
-    <ul v-for="element in store.movies">
-        <li>
-            <strong>Titolo: </strong>
-            {{ element.title }}
-        </li>
-        <img :src="cover(element.poster_path)" :alt="element.original_title">
-        <li>
-            <strong>Titolo originale: </strong>
-            {{ element.original_title }}
-        </li>
-        <li>
-            <strong>Lingua: </strong>
-            <span :class="'fi fi-' + setFlag(element.original_language)"></span>
-        </li>
-        <li>
-            <strong>Voto: </strong>
-            {{ element.vote_average }} // {{ voteAndStar(element.vote_average) }}
-            <span v-for="index in voteAndStar(element.vote_average)">
-                <font-awesome-icon icon="fa-solid fa-star" />
-            </span>
-            <span v-for="index in (5 - voteAndStar(element.vote_average))">
-                <font-awesome-icon icon="fa-regular fa-star" />
-            </span>
-        </li>
-    </ul>
-    <hr>
-    <h4>SERIE TV</h4>
-    <ul v-for="elementB in store.series">
-        <li> <strong>Titolo: </strong>{{ elementB.name }}</li>
-        <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
-        <li> <strong>Titolo originale: </strong>{{ elementB.original_name }} </li>
-        <li> <strong>Lingua: </strong>
-            <span :class="'fi fi-' + setFlag(elementB.original_language)"></span>
-        </li>
-        <li> <strong>Voto: </strong>{{ elementB.vote_average }} // {{ voteAndStar(elementB.vote_average) }}</li>
-    </ul>
+    <main>
+        <section>
+            <!-------- SECTION FILM -------->
+            <div class="title-container">
+                <div>
+                    <h4>FILM</h4>
+                </div>
+            </div>
+            <div class="my-container">
+                <div v-for="element in store.movies" class="my-card">
+                    <img :src="cover(element.poster_path)" :alt="element.original_title">
+                    <div>
+                        <p>
+                            <strong>Titolo: </strong>
+                            <span class="caption">
+                                {{ element.title }}
+                            </span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <strong>Titolo originale: </strong>
+                            <span class="caption">
+                                {{ element.original_title }}
+                            </span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <strong>Lingua: </strong>
+                            <span class="caption" :class="'fi fi-' + setFlag(element.original_language)"></span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <strong>Voto: </strong>
+                            <span v-for="index in voteAndStar(element.vote_average)">
+                                <font-awesome-icon icon="fa-solid fa-star" />
+                            </span>
+                            <span v-for="index in (5 - voteAndStar(element.vote_average))">
+                                <font-awesome-icon icon="fa-regular fa-star" />
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-------- SECTION SERIE TV -------->
+            <div class="title-container">
+                <div>
+                    <h4>SERIE TV</h4>
+                </div>
+            </div>
+            <div class="my-container">
+                <div v-for="elementB in store.series" class="my-card">
+                    <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
+                    <div>
+                        <p>
+                            <strong>Titolo: </strong>
+                            <span class="caption">
+                                {{ elementB.name }}
+                            </span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <strong>Titolo originale: </strong>
+                            <span class="caption">
+                                {{ elementB.original_name }}
+                            </span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <strong>Lingua: </strong>
+                            <span class="caption" :class="'fi fi-' + setFlag(elementB.original_language)"></span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <strong>Voto: </strong>
+                            <span v-for="index in voteAndStar(elementB.vote_average)">
+                                <font-awesome-icon icon="fa-solid fa-star" />
+                            </span>
+                            <span v-for="index in (5 - voteAndStar(elementB.vote_average))">
+                                <font-awesome-icon icon="fa-regular fa-star" />
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </section>
+            </main>
 </template>
 
-<style lang="scss">
-@use "../style/style.scss"
+<style lang="scss" scoped>
+@use "../style/style.scss" as *;
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Raleway:wght@400;600&display=swap');
+
+    main{
+        height: 90vh;
+        overflow-y: auto;
+        padding: 20px 0;
+        background-color: lightgray;
+    }
+    .title-container{
+        padding: 15px 0;
+        color: white;
+        background-color: black;
+        margin: 15px 0;
+        &>div{
+            width: 90vw;
+            margin: 0 auto;
+        }
+    }
+    p{
+        font-size: 0.8rem;
+    }
+    .my-container{
+        width: 90vw;
+        margin: 0 auto;
+        @include display-flex-rule;
+        flex-wrap: wrap;
+    }
+    .my-card{
+        width: 20%;
+        margin-bottom: 20px;
+        padding: 0 5px;
+    }
+    .caption{
+        font-family: 'Coming Soon', cursive;
+    }
 </style>
