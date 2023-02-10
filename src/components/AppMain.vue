@@ -57,43 +57,45 @@ import { store } from '../store';
             </div>
             <!-------- SECTION FILM CARD -------->
             <div class="my-container">
-                <div v-for="element in store.movies" class="my-card">
-                    <div>
-                        <img :src="cover(element.poster_path)" :alt="element.original_title">
-                    </div>
-                    <div class="description">
-                        <div>
-                            <p>
-                                <strong>Titolo: </strong>
-                                <span class="caption">
-                                    {{ element.title }}
-                                </span>
-                            </p>
+                <div v-for="element in store.movies" class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img :src="cover(element.poster_path)" :alt="element.original_title">
                         </div>
-                        <div>
-                            <p>
-                                <strong>Titolo originale: </strong>
-                                <span class="caption">
-                                    {{ element.original_title }}
-                                </span>
-                            </p>
-                        </div>
-                        <div>
-                            <p>
-                                <strong>Lingua: </strong>
-                                <span class="caption" :class="'fi fi-' + setFlag(element.original_language)"></span>
-                            </p>
-                        </div>
-                        <div>
-                            <p>
-                                <strong>Voto: </strong>
-                                <span v-for="index in voteAndStar(element.vote_average)">
-                                    <font-awesome-icon class="icon-star" icon="fa-solid fa-star" />
-                                </span>
-                                <span v-for="index in (5 - voteAndStar(element.vote_average))">
-                                    <font-awesome-icon class="icon-star" icon="fa-regular fa-star" />
-                                </span>
-                            </p>
+                        <div class="description flip-card-back">
+                            <div>
+                                <p>
+                                    <strong>Titolo: </strong>
+                                    <span class="caption">
+                                        {{ element.title }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <strong>Titolo originale: </strong>
+                                    <span class="caption">
+                                        {{ element.original_title }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <strong>Lingua: </strong>
+                                    <span class="caption" :class="'fi fi-' + setFlag(element.original_language)"></span>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <strong>Voto: </strong>
+                                    <span v-for="index in voteAndStar(element.vote_average)">
+                                        <font-awesome-icon class="icon-star" icon="fa-solid fa-star" />
+                                    </span>
+                                    <span v-for="index in (5 - voteAndStar(element.vote_average))">
+                                        <font-awesome-icon class="icon-star" icon="fa-regular fa-star" />
+                                    </span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                     
@@ -106,7 +108,7 @@ import { store } from '../store';
                 </div>
             </div>
             <!-------- SECTION SERIE TV CARD -------->
-            <div class="my-container">
+            <!-- <div class="my-container">
                 <div v-for="elementB in store.series" class="my-card">
                     <div>
                         <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
@@ -147,13 +149,14 @@ import { store } from '../store';
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             </section>
             </main>
 </template>
 
 <style lang="scss" scoped>
 @use "../style/style.scss" as *;
+@use "../style/partials/cardHoverEffect.scss" as *;
 @import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Raleway:wght@400;600&display=swap');
 
     main{
@@ -186,20 +189,13 @@ import { store } from '../store';
         @include display-flex-rule;
         flex-wrap: wrap;
     }
-    .my-card{
-        width: 20%;
-        margin-bottom: 20px;
-        position: relative;
-    }
     div.description{
-        position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
         max-width: 154px;
         background: black;
         color: white;
         padding: 5px 3px 0 5px;
-        height: 100%;
     }
     .caption{
         font-family: 'Coming Soon', cursive;
