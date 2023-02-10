@@ -28,5 +28,6 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Raleway:wght@400;600&display=swap');
 body{
     font-family: 'Raleway', sans-serif;
+    overflow-y: hidden;
 }
 </style>

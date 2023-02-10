@@ -119,7 +119,7 @@ import { store } from '../store';
                 <div v-for="elementB in store.series" class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
+                            <img :src="cover(elementB.poster_path)" :alt="elementB.original_name">
                         </div>
                         <div class="description flip-card-back">
                             <div>
