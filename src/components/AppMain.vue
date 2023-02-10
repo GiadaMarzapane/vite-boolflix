@@ -30,7 +30,7 @@ import { store } from '../store';
             return classflag = lang
         },
         cover(posterpath){
-            return `https://image.tmdb.org/t/p/w154${posterpath}`
+            return `https://image.tmdb.org/t/p/w342${posterpath}`
         },
         voteAndStar(OldValue){
             let NewValue = (((OldValue - 1) * (5 - 1)) / (10 - 1)) + 1
@@ -96,9 +96,16 @@ import { store } from '../store';
                                     </span>
                                 </p>
                             </div>
+                            <div>
+                                <p>
+                                    <strong>Overview: </strong>
+                                    <span class="caption">
+                                        {{ element.overview }}
+                                    </span>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
             <!-------- SECTION SERIE TV -------->
@@ -148,6 +155,14 @@ import { store } from '../store';
                                     </span>
                                 </p>
                             </div>
+                            <div>
+                                <p>
+                                    <strong>Overview: </strong>
+                                    <span class="caption">
+                                        {{ elementB.overview }}
+                                    </span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -178,11 +193,10 @@ import { store } from '../store';
         }
     }
     p{
-        font-size: 0.8rem;
-        line-height: 18px;
-        margin-bottom: 10px;
+        font-size: 0.7rem;
+        margin-bottom: 7px;
     }
-    .icon-star{
+        .icon-star{
         color: goldenrod;
     }
     .my-container{
@@ -194,7 +208,7 @@ import { store } from '../store';
     div.description{
         top: 0;
         right: 0;
-        max-width: 154px;
+        max-width: 342px;
         background: black;
         color: white;
         padding: 5px 3px 0 5px;
