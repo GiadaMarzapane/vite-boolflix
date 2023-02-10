@@ -24,6 +24,9 @@ import { store } from '../store';
             else if (lang == 'zh') {
                 return classflag = 'cn'
             }
+            else if (lang == 'el') {
+                return classflag = 'gr'
+            }
             return classflag = lang
         },
         cover(posterpath){
@@ -52,42 +55,48 @@ import { store } from '../store';
                     <h4>FILM</h4>
                 </div>
             </div>
+            <!-------- SECTION FILM CARD -------->
             <div class="my-container">
                 <div v-for="element in store.movies" class="my-card">
-                    <img :src="cover(element.poster_path)" :alt="element.original_title">
                     <div>
-                        <p>
-                            <strong>Titolo: </strong>
-                            <span class="caption">
-                                {{ element.title }}
-                            </span>
-                        </p>
+                        <img :src="cover(element.poster_path)" :alt="element.original_title">
                     </div>
-                    <div>
-                        <p>
-                            <strong>Titolo originale: </strong>
-                            <span class="caption">
-                                {{ element.original_title }}
-                            </span>
-                        </p>
+                    <div class="description">
+                        <div>
+                            <p>
+                                <strong>Titolo: </strong>
+                                <span class="caption">
+                                    {{ element.title }}
+                                </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <strong>Titolo originale: </strong>
+                                <span class="caption">
+                                    {{ element.original_title }}
+                                </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <strong>Lingua: </strong>
+                                <span class="caption" :class="'fi fi-' + setFlag(element.original_language)"></span>
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <strong>Voto: </strong>
+                                <span v-for="index in voteAndStar(element.vote_average)">
+                                    <font-awesome-icon class="icon-star" icon="fa-solid fa-star" />
+                                </span>
+                                <span v-for="index in (5 - voteAndStar(element.vote_average))">
+                                    <font-awesome-icon class="icon-star" icon="fa-regular fa-star" />
+                                </span>
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <p>
-                            <strong>Lingua: </strong>
-                            <span class="caption" :class="'fi fi-' + setFlag(element.original_language)"></span>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            <strong>Voto: </strong>
-                            <span v-for="index in voteAndStar(element.vote_average)">
-                                <font-awesome-icon icon="fa-solid fa-star" />
-                            </span>
-                            <span v-for="index in (5 - voteAndStar(element.vote_average))">
-                                <font-awesome-icon icon="fa-regular fa-star" />
-                            </span>
-                        </p>
-                    </div>
+                    
                 </div>
             </div>
             <!-------- SECTION SERIE TV -------->
@@ -96,41 +105,46 @@ import { store } from '../store';
                     <h4>SERIE TV</h4>
                 </div>
             </div>
+            <!-------- SECTION SERIE TV CARD -------->
             <div class="my-container">
                 <div v-for="elementB in store.series" class="my-card">
-                    <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
                     <div>
-                        <p>
-                            <strong>Titolo: </strong>
-                            <span class="caption">
-                                {{ elementB.name }}
-                            </span>
-                        </p>
+                        <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
                     </div>
-                    <div>
-                        <p>
-                            <strong>Titolo originale: </strong>
-                            <span class="caption">
-                                {{ elementB.original_name }}
-                            </span>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            <strong>Lingua: </strong>
-                            <span class="caption" :class="'fi fi-' + setFlag(elementB.original_language)"></span>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            <strong>Voto: </strong>
-                            <span v-for="index in voteAndStar(elementB.vote_average)">
-                                <font-awesome-icon icon="fa-solid fa-star" />
-                            </span>
-                            <span v-for="index in (5 - voteAndStar(elementB.vote_average))">
-                                <font-awesome-icon icon="fa-regular fa-star" />
-                            </span>
-                        </p>
+                    <div class="description">
+                        <div>
+                            <p>
+                                <strong>Titolo: </strong>
+                                <span class="caption">
+                                    {{ elementB.name }}
+                                </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <strong>Titolo originale: </strong>
+                                <span class="caption">
+                                    {{ elementB.original_name }}
+                                </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <strong>Lingua: </strong>
+                                <span class="caption" :class="'fi fi-' + setFlag(elementB.original_language)"></span>
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <strong>Voto: </strong>
+                                <span v-for="index in voteAndStar(elementB.vote_average)">
+                                    <font-awesome-icon class="icon-star" icon="fa-solid fa-star" />
+                                </span>
+                                <span v-for="index in (5 - voteAndStar(elementB.vote_average))">
+                                    <font-awesome-icon class="icon-star" icon="fa-regular fa-star" />
+                                </span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -160,6 +174,11 @@ import { store } from '../store';
     }
     p{
         font-size: 0.8rem;
+        line-height: 18px;
+        margin-bottom: 10px;
+    }
+    .icon-star{
+        color: goldenrod;
     }
     .my-container{
         width: 90vw;
@@ -170,7 +189,17 @@ import { store } from '../store';
     .my-card{
         width: 20%;
         margin-bottom: 20px;
-        padding: 0 5px;
+        position: relative;
+    }
+    div.description{
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-width: 154px;
+        background: black;
+        color: white;
+        padding: 5px 3px 0 5px;
+        height: 100%;
     }
     .caption{
         font-family: 'Coming Soon', cursive;
