@@ -108,48 +108,50 @@ import { store } from '../store';
                 </div>
             </div>
             <!-------- SECTION SERIE TV CARD -------->
-            <!-- <div class="my-container">
-                <div v-for="elementB in store.series" class="my-card">
-                    <div>
-                        <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
-                    </div>
-                    <div class="description">
-                        <div>
-                            <p>
-                                <strong>Titolo: </strong>
-                                <span class="caption">
-                                    {{ elementB.name }}
-                                </span>
-                            </p>
+            <div class="my-container">
+                <div v-for="elementB in store.series" class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img :src="cover(elementB.poster_path)" :alt="elementB.original_title">
                         </div>
-                        <div>
-                            <p>
-                                <strong>Titolo originale: </strong>
-                                <span class="caption">
-                                    {{ elementB.original_name }}
-                                </span>
-                            </p>
-                        </div>
-                        <div>
-                            <p>
-                                <strong>Lingua: </strong>
-                                <span class="caption" :class="'fi fi-' + setFlag(elementB.original_language)"></span>
-                            </p>
-                        </div>
-                        <div>
-                            <p>
-                                <strong>Voto: </strong>
-                                <span v-for="index in voteAndStar(elementB.vote_average)">
-                                    <font-awesome-icon class="icon-star" icon="fa-solid fa-star" />
-                                </span>
-                                <span v-for="index in (5 - voteAndStar(elementB.vote_average))">
-                                    <font-awesome-icon class="icon-star" icon="fa-regular fa-star" />
-                                </span>
-                            </p>
+                        <div class="description flip-card-back">
+                            <div>
+                                <p>
+                                    <strong>Titolo: </strong>
+                                    <span class="caption">
+                                        {{ elementB.name }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <strong>Titolo originale: </strong>
+                                    <span class="caption">
+                                        {{ elementB.original_name }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <strong>Lingua: </strong>
+                                    <span class="caption" :class="'fi fi-' + setFlag(elementB.original_language)"></span>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <strong>Voto: </strong>
+                                    <span v-for="index in voteAndStar(elementB.vote_average)">
+                                        <font-awesome-icon class="icon-star" icon="fa-solid fa-star" />
+                                    </span>
+                                    <span v-for="index in (5 - voteAndStar(elementB.vote_average))">
+                                        <font-awesome-icon class="icon-star" icon="fa-regular fa-star" />
+                                    </span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             </section>
             </main>
 </template>
